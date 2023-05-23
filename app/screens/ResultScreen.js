@@ -6,7 +6,6 @@ import {
   JosefinSans_400Regular,
 } from "@expo-google-fonts/josefin-sans";
 import { Keyboard, StyleSheet, Text, View, TextInput } from "react-native";
-import { Iconoir } from "iconoir-react-native";
 
 const ResultScreen = ({ navigation }) => {
   const restaurants = {
