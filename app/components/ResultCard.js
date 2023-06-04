@@ -1,19 +1,9 @@
 import React from "react";
-import { useState } from "react";
-import {
-  useFonts,
-  JosefinSans_400Regular,
-} from "@expo-google-fonts/josefin-sans";
-import {
-  Keyboard,
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  ScrollView,
-  SafeAreaView,
-} from "react-native";
+import { useFonts } from "expo-font";
+import { JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
+import { StyleSheet, Text, View } from "react-native";
 import { Fontisto, FontAwesome5, Feather } from "@expo/vector-icons";
+import { themeColors } from "../styles";
 
 const ResultCard = ({ restaurantInfo }) => {
   const maxRating = [1, 2, 3, 4, 5];
@@ -25,7 +15,7 @@ const ResultCard = ({ restaurantInfo }) => {
   if (!fontsLoaded) {
     return null;
   }
-  const renderStars = () => {
+  const renderStats = () => {
     return (
       <View style={{ flexDirection: "row", height: 20 }}>
         <View style={{ flexDirection: "row", height: 20 }}>
@@ -40,7 +30,7 @@ const ResultCard = ({ restaurantInfo }) => {
                 />
               );
             } else if (i === Math.floor(restaurantInfo.rating)) {
-              return restaurantInfo.rating % 1 >= .5 ? (
+              return restaurantInfo.rating % 1 >= 0.5 ? (
                 <FontAwesome5
                   name="star-half-alt"
                   size={styles.icon.size}
@@ -78,12 +68,13 @@ const ResultCard = ({ restaurantInfo }) => {
             {restaurantInfo.rating}
           </Text>
         </View>
-        <View style={{ marginTop: 3, marginLeft: 10 }}>
+
+        <View style={{ marginLeft: 20 }}>
           <FontAwesome5
-                    name="walking"
-                    size={styles.icon.size}
-                    color={styles.star.color}
-                  />
+            name="walking"
+            size={styles.icon.size}
+            color={styles.star.color}
+          />
         </View>
         <View style={{ marginTop: 3 }}>
           <Text
@@ -125,8 +116,10 @@ const ResultCard = ({ restaurantInfo }) => {
 
   return (
     <View style={styles.resultCard}>
-      <Text style={styles.cardTitleText}>{restaurantInfo.name}</Text>
-      {renderStars()}
+      <View style={{ marginBottom: 5 }}>
+        <Text style={styles.cardTitleText}>{restaurantInfo.name}</Text>
+      </View>
+      <View style={{ marginBottom: 5 }}>{renderStats()}</View>
     </View>
   );
 };
@@ -139,11 +132,11 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 15,
     borderWidth: 2.5,
-    borderColor: "#1d3522",
-    backgroundColor: "#f2e8cf",
+    borderColor: themeColors.borderDark,
+    backgroundColor: themeColors.lightBeige,
     margin: 5,
     fontFamily: "JosefinSans_400Regular",
-    shadowColor: "#386641",
+    shadowColor: themeColors.shadowGreen,
     shadowOpacity: 0.7,
     shadowRadius: 10,
     height: 120,
@@ -156,10 +149,10 @@ const styles = StyleSheet.create({
     size: 16,
   },
   star: {
-    color: "#883031",
+    color: themeColors.accentRed,
   },
   dollar: {
-    filled: "#883031",
-    empty: '#d4b4b4'
-  }
+    filled: themeColors.accentRed,
+    empty: themeColors.accentLightRed,
+  },
 });

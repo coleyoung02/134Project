@@ -1,20 +1,19 @@
 import React from "react";
 import { Pressable, StyleSheet, Text, View, ScrollView } from "react-native";
-import Triangle from "../components/Triangle";
-
-const width = 100;
-const height = 173;
+import { useFonts } from "expo-font";
+import { JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
+import { themeColors } from "../styles";
 
 const SearchScreen = ({ navigation }) => {
-  let f = 0;
-  return (
-    <ScrollView style={styles.container}>
-      <Text>Search</Text>
-      <Triangle></Triangle>
-    </ScrollView>
-  );
-};
+  let [fontsLoaded] = useFonts({
+    JosefinSans_400Regular,
+  });
 
+  if (!fontsLoaded) {
+    return null;
+  }
+  return <ScrollView style={styles.container}></ScrollView>;
+};
 
 export default SearchScreen;
 
@@ -25,8 +24,8 @@ const styles = {
     paddingBottom: "25%",
     paddingHorizontal: "3%",
     opacity: 0.65,
-    backgroundColor: "#6a994a",
+    backgroundColor: themeColors.greenBg,
     alignContent: "flex-start",
     fontFamily: "JosefinSans_400Regular",
-  }
+  },
 };

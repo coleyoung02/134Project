@@ -42,7 +42,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Search"
-        component={SearchScreen}
+        component={ResultScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
