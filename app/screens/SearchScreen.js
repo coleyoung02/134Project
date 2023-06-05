@@ -28,7 +28,7 @@ const SearchScreen = ({ navigation }) => {
   }
   return (
     <ScrollView style={styles.container}>
-      <View style={styles.searchBox}>
+      <View style={{ ...styles.searchBox, ...styles.shadow }}>
         <TextInput
           placeholder="Search"
           onSubmitEditing={Keyboard.dismiss}
@@ -41,7 +41,11 @@ const SearchScreen = ({ navigation }) => {
       </View>
 
       <View
-        style={{ flexDirection: "row", flexWrap: "wrap", marginBottom: 10 }}
+        style={{
+          flexDirection: "row",
+          flexWrap: "wrap",
+          marginBottom: 10,
+        }}
       >
         {selectedFilters.map((filter) => (
           <View key={`selected-tag-${filter}`} style={styles.tag}>
@@ -52,14 +56,14 @@ const SearchScreen = ({ navigation }) => {
                 color: themeColors.accentLight,
               }}
             >
-              {filter}
+              {icons[filter] ? icons[filter].icon["light-18"] : filter}
             </Text>
           </View>
         ))}
       </View>
 
       {Object.keys(searchCategories).map((key) => (
-        <View key={key} style={styles.searchSection}>
+        <View key={key} style={{ ...styles.searchSection, ...styles.shadow }}>
           <Text style={{ ...styles.text, fontSize: 20, marginBottom: 10 }}>
             {searchCategories[key].category}
           </Text>
@@ -70,7 +74,12 @@ const SearchScreen = ({ navigation }) => {
               {searchCategories[key].values.map((category) => (
                 <Pressable
                   key={category}
-                  style={styles.searchCategoryCard}
+                  style={{
+                    ...styles.searchCategoryCard,
+                    backgroundColor: selectedFilters.includes(category)
+                      ? themeColors.accentRed
+                      : themeColors.accentLight,
+                  }}
                   onPress={() => {
                     if (!selectedFilters.includes(category)) {
                       setSelectedFilters((prev) => [...prev, category]);
@@ -83,15 +92,32 @@ const SearchScreen = ({ navigation }) => {
                 >
                   {icons[category] ? (
                     <>
-                      {icons[category].icon}
+                      {selectedFilters.includes(category)
+                        ? icons[category].icon["light-24"]
+                        : icons[category].icon["dark-24"]}
                       <Text
-                        style={{ ...styles.text, fontSize: 14, marginTop: 3 }}
+                        style={{
+                          ...styles.text,
+                          fontSize: 14,
+                          marginTop: 3,
+                          color: selectedFilters.includes(category)
+                            ? themeColors.accentLight
+                            : "black",
+                        }}
                       >
                         {category}
                       </Text>
                     </>
                   ) : (
-                    <Text style={{ ...styles.text, fontSize: 18 }}>
+                    <Text
+                      style={{
+                        ...styles.text,
+                        fontSize: 18,
+                        color: selectedFilters.includes(category)
+                          ? themeColors.accentLight
+                          : "black",
+                      }}
+                    >
                       {category}
                     </Text>
                   )}
@@ -140,9 +166,6 @@ const styles = {
     marginTop: 5,
     marginBottom: 15,
     fontFamily: "JosefinSans_400Regular",
-    shadowColor: themeColors.shadowGreen,
-    shadowOpacity: 0.7,
-    shadowRadius: 10,
     height: 42,
   },
   searchSection: {
@@ -166,7 +189,6 @@ const styles = {
     paddingVertical: 10,
     paddingHorizontal: 15,
     borderRadius: 5,
-    backgroundColor: themeColors.accentLight,
     borderColor: themeColors.accentRed,
     borderWidth: 2,
     margin: 2,
@@ -182,6 +204,8 @@ const styles = {
     borderWidth: 2.5,
   },
   tag: {
+    display: "flex",
+    flexDirection: "row",
     borderRadius: 10,
     backgroundColor: themeColors.accentRed,
     paddingVertical: 5,
@@ -189,5 +213,13 @@ const styles = {
     margin: 3,
     borderColor: themeColors.accentLight,
     borderWidth: 1,
+    textAlign: "center",
+    alignItems: "center",
+    height: 35,
+  },
+  shadow: {
+    shadowColor: themeColors.shadowGreen,
+    shadowOpacity: 0.7,
+    shadowRadius: 10,
   },
 };

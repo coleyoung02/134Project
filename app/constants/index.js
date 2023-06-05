@@ -4,6 +4,7 @@ import {
   MaterialIcons,
   Feather,
 } from "@expo/vector-icons";
+import { themeColors } from "../styles";
 
 export const restaurants = {
   Chipotle: {
@@ -196,78 +197,372 @@ export const searchCategories = {
 export const icons = {
   "Apple Pay": {
     name: "Apple Pay",
-    icon: <FontAwesome5 name="apple-pay" size={24} color="black" />,
+    icon: {
+      "dark-18": <FontAwesome5 name="apple-pay" size={18} color="black" />,
+      "dark-24": <FontAwesome5 name="apple-pay" size={24} color="black" />,
+      "light-18": (
+        <FontAwesome5
+          name="apple-pay"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <FontAwesome5
+          name="apple-pay"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   "Google Pay": {
     name: "Google Pay",
-    icon: <FontAwesome5 name="google-pay" size={24} color="black" />,
+    icon: {
+      "dark-18": <FontAwesome5 name="google-pay" size={18} color="black" />,
+      "dark-24": <FontAwesome5 name="google-pay" size={24} color="black" />,
+      "light-18": (
+        <FontAwesome5
+          name="google-pay"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <FontAwesome5
+          name="google-pay"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Reservations: {
     name: "Reservations",
-    icon: (
-      <MaterialCommunityIcons name="calendar-clock" size={24} color="black" />
-    ),
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="calendar-clock" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="calendar-clock" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="calendar-clock"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="calendar-clock"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Takeout: {
     name: "Takeout",
-    icon: (
-      <MaterialCommunityIcons name="food-takeout-box" size={24} color="black" />
-    ),
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons
+          name="food-takeout-box"
+          size={18}
+          color="black"
+        />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons
+          name="food-takeout-box"
+          size={24}
+          color="black"
+        />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="food-takeout-box"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="food-takeout-box"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Delivery: {
     name: "Delivery",
-    icon: <MaterialIcons name="delivery-dining" size={24} color="black" />,
+    icon: {
+      "dark-18": (
+        <MaterialIcons name="delivery-dining" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialIcons name="delivery-dining" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialIcons
+          name="delivery-dining"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialIcons
+          name="delivery-dining"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   "Mobile Order": {
     name: "Mobile Order",
-    icon: <Feather name="smartphone" size={24} color="black" />,
+    icon: {
+      "dark-18": <Feather name="smartphone" size={18} color="black" />,
+      "dark-24": <Feather name="smartphone" size={24} color="black" />,
+      "light-18": (
+        <Feather name="smartphone" size={18} color={themeColors.accentLight} />
+      ),
+      "light-24": (
+        <Feather name="smartphone" size={24} color={themeColors.accentLight} />
+      ),
+    },
   },
   "Drive Thru": {
     name: "Drive Thru",
-    icon: <FontAwesome5 name="car" size={24} color="black" />,
+    icon: {
+      "dark-18": <FontAwesome5 name="car" size={18} color="black" />,
+      "dark-24": <FontAwesome5 name="car" size={24} color="black" />,
+      "light-18": (
+        <FontAwesome5 name="car" size={18} color={themeColors.accentLight} />
+      ),
+      "light-24": (
+        <FontAwesome5 name="car" size={24} color={themeColors.accentLight} />
+      ),
+    },
   },
   "Contactless Payment": {
     name: "Contactless Payment",
-    icon: (
-      <MaterialCommunityIcons
-        name="contactless-payment"
-        size={24}
-        color="black"
-      />
-    ),
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons
+          name="contactless-payment"
+          size={18}
+          color="black"
+        />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons
+          name="contactless-payment"
+          size={24}
+          color="black"
+        />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="contactless-payment"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="contactless-payment"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   "Cash Only": {
     name: "Cash Only",
-    icon: (
-      <MaterialCommunityIcons name="credit-card-off" size={24} color="black" />
-    ),
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons
+          name="credit-card-off"
+          size={18}
+          color="black"
+        />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons
+          name="credit-card-off"
+          size={24}
+          color="black"
+        />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="credit-card-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="credit-card-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   "Serves Alcohol": {
     name: "Serves Alcohol",
-    icon: <FontAwesome5 name="glass-martini-alt" size={24} color="black" />,
+    icon: {
+      "dark-18": (
+        <FontAwesome5 name="glass-martini-alt" size={18} color="black" />
+      ),
+      "dark-24": (
+        <FontAwesome5 name="glass-martini-alt" size={24} color="black" />
+      ),
+      "light-18": (
+        <FontAwesome5
+          name="glass-martini-alt"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <FontAwesome5
+          name="glass-martini-alt"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Vegan: {
     name: "Vegan",
-    icon: <MaterialCommunityIcons name="cow" size={24} color="black" />,
+    icon: {
+      "dark-18": <MaterialCommunityIcons name="cow" size={18} color="black" />,
+      "dark-24": <MaterialCommunityIcons name="cow" size={24} color="black" />,
+      "light-18": (
+        <MaterialCommunityIcons
+          name="cow"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="cow"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Vegetarian: {
     name: "Vegetarian",
-    icon: <FontAwesome5 name="leaf" size={24} color="black" />,
+    icon: {
+      "dark-18": <FontAwesome5 name="leaf" size={18} color="black" />,
+      "dark-24": <FontAwesome5 name="leaf" size={24} color="black" />,
+      "light-18": (
+        <FontAwesome5 name="leaf" size={18} color={themeColors.accentLight} />
+      ),
+      "light-24": (
+        <FontAwesome5 name="leaf" size={24} color={themeColors.accentLight} />
+      ),
+    },
   },
   Pescatarian: {
     name: "Pescatarian",
-    icon: <FontAwesome5 name="fish" size={24} color="black" />,
+    icon: {
+      "dark-18": <FontAwesome5 name="fish" size={18} color="black" />,
+      "dark-24": <FontAwesome5 name="fish" size={24} color="black" />,
+      "light-18": (
+        <FontAwesome5 name="fish" size={18} color={themeColors.accentLight} />
+      ),
+      "light-24": (
+        <FontAwesome5 name="fish" size={24} color={themeColors.accentLight} />
+      ),
+    },
   },
   "Gluten Free": {
     name: "Gluten Free",
-    icon: <MaterialCommunityIcons name="barley-off" size={24} color="black" />,
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="barley-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="barley-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="barley-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="barley-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Halal: {
     name: "Halal",
-    icon: <MaterialCommunityIcons name="food-halal" size={24} color="black" />,
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="food-halal" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="food-halal" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="food-halal"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="food-halal"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
   Kosher: {
     name: "Kosher",
-    icon: <MaterialCommunityIcons name="food-kosher" size={24} color="black" />,
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="food-kosher" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="food-kosher" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="food-kosher"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="food-kosher"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
   },
+};
+
+export const shadow = {
+  shadowColor: themeColors.shadowGreen,
+  shadowOpacity: 0.7,
+  shadowRadius: 10,
 };

@@ -1,8 +1,16 @@
 import { React, useState } from "react";
 import { useFonts } from "expo-font";
-import { JosefinSans_400Regular, JosefinSans_600SemiBold } from "@expo-google-fonts/josefin-sans";
+import {
+  JosefinSans_400Regular,
+  JosefinSans_600SemiBold,
+} from "@expo-google-fonts/josefin-sans";
 import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Fontisto, FontAwesome5, FontAwesome, Feather } from "@expo/vector-icons";
+import {
+  Fontisto,
+  FontAwesome5,
+  FontAwesome,
+  Feather,
+} from "@expo/vector-icons";
 import { themeColors } from "../styles";
 import GLOBAL from "../UserData.js";
 
@@ -39,7 +47,7 @@ const ResultCard = ({ restaurantInfo }) => {
       setFav(false);
     }
     return (
-      <View style={{ flexDirection: "row", height: 20 }}>
+      <View style={{ flexDirection: "row" }}>
         <View style={{ flexDirection: "row", height: 20 }}>
           {maxRating.map((rating, i) => {
             if (i < Math.floor(restaurantInfo.rating)) {
@@ -138,19 +146,28 @@ const ResultCard = ({ restaurantInfo }) => {
             }
           })}
         </View>
-        <View style={{ flexDirection: "row", height: 20, marginLeft: 20 }}>
+
+        <View style={{ position: "absolute", bottom: 0, right: 15 }}>
           <Pressable onPress={onPressHeart}>
-                {() => {
-                  if (GLOBAL.bookmarks.includes(restaurantInfo.name)) {
-                    return (
-                      <FontAwesome name="heart" size={24} color={styles.star.color} />
-                    );
-                  } else  {
-                    return (
-                      <FontAwesome name="heart-o" size={24} color={styles.star.color} />
-                    );
-                  }
-                }}
+            {() => {
+              if (GLOBAL.bookmarks.includes(restaurantInfo.name)) {
+                return (
+                  <FontAwesome
+                    name="heart"
+                    size={24}
+                    color={styles.star.color}
+                  />
+                );
+              } else {
+                return (
+                  <FontAwesome
+                    name="heart-o"
+                    size={24}
+                    color={styles.star.color}
+                  />
+                );
+              }
+            }}
           </Pressable>
         </View>
       </View>
