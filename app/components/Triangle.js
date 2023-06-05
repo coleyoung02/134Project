@@ -6,6 +6,7 @@ import GLOBAL from "../UserData.js";
 import ResultCard from "../components/ResultCard";
 import { restaurants } from "../constants";
 import { themeColors } from "../styles";
+import * as Animatable from "react-native-animatable";
 
 const width = 100;
 const height = 173;
@@ -18,7 +19,7 @@ const Triangle = ({ results }) => {
   const [distance, setDistance] = useState(0);
   const [rating, setRating] = useState(1);
   const [dotY, setDotY] = useState(163);
-  const [dotX, setDotX] = useState(85);
+  const [dotX, setDotX] = useState(81);
 
   function getSortFunction(costVal, distVal, ratingVal) {
     return (a, b) => {
@@ -99,7 +100,8 @@ const Triangle = ({ results }) => {
             styles.triangle,
           ]}
         >
-          <View style={[styles.circle, { top: dotY, left: dotX }]}></View>
+          <Animatable.View style={[styles.circle, { top: dotY, left: dotX }]} animation="wobble" iterationCount={2} delay={100}>
+          </Animatable.View>
         </Pressable>
       </View>
 

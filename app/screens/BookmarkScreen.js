@@ -35,8 +35,8 @@ const BookmarkScreen = ({ navigation }) => {
   
 
   return (
-    <ScrollView style={{ flex: 1 }}>
-      <View style={styles.container}>
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
         <View style={styles.searchBox}>
           <Pressable onPress={refresh}><Text>Refresh</Text></Pressable>
         </View>

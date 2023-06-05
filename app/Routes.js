@@ -10,6 +10,7 @@ const SearchResultRoute = () => {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        cardStyle: { flex: 1 },
       }}
     >
       <Stack.Screen name="SearchScreen" component={SearchScreen} />
