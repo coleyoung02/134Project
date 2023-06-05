@@ -34,11 +34,10 @@ const ResultScreen = ({ navigation, route }) => {
     return route.params.filters.every((a) => aller.includes(a.toLowerCase()));
   }
 
-  function isSafe(E) {
-    return true;
-  }
 
   console.log(route.params);
+  console.log(Object.keys(restaurants)
+  .filter(isSafe));
 
   const renderSearchFilters = () => {
     return (
