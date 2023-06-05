@@ -47,9 +47,9 @@ const Triangle = ({ results }) => {
   }
 
   function isSafe(restaurant) {
-    console.log(restaurant);
+    //console.log(restaurant);
     let aller = restaurants[restaurant].safeRestrictions;
-    console.log(aller);
+    //console.log(aller);
     return GLOBAL.allergens.every((a) => aller.includes(a));
   }
 
@@ -60,7 +60,7 @@ const Triangle = ({ results }) => {
     <View>
       <View style={styles.triangleHolder}>
         <View style={styles.labelContainer}>
-          <Text style={styles.textField}>Cost = {percent(cost)}</Text>
+          <Text style={styles.textField}>Cost {percent(cost)}</Text>
         </View>
         <Pressable
           onPressIn={(nativeEvent) => {
@@ -113,11 +113,11 @@ const Triangle = ({ results }) => {
         }}
       >
         <View style={styles.labelContainer}>
-          <Text style={styles.textField}>Distance = {percent(distance)}</Text>
+          <Text style={styles.textField}>Distance {percent(distance)}</Text>
         </View>
         <View style={styles.labelContainer}>
           <Text style={[styles.textField, { textAlign: "right" }]}>
-            Rating = {percent(rating)}
+            Rating {percent(rating)}
           </Text>
         </View>
       </View>
