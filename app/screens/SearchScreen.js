@@ -18,88 +18,69 @@ import { MaterialIcons } from "@expo/vector-icons";
 
 const SearchScreen = ({ navigation }) => {
   const [selectedFilters, setSelectedFilters] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
   let [fontsLoaded] = useFonts({
     JosefinSans_400Regular,
     JosefinSans_600SemiBold,
   });
 
-  if (!fontsLoaded) {
-    return null;
-  }
-  return (
-    <ScrollView style={styles.container}>
-      <View style={{ ...styles.searchBox, ...styles.shadow }}>
-        <TextInput
-          placeholder="Search"
-          onSubmitEditing={Keyboard.dismiss}
-          style={{
-            fontFamily: "JosefinSans_400Regular",
-            fontSize: 18,
-            padding: 1,
-          }}
-        ></TextInput>
-      </View>
-
-      <View
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          marginBottom: 10,
-        }}
-      >
-        {selectedFilters.map((filter) => (
-          <View key={`selected-tag-${filter}`} style={styles.tag}>
-            <Text
-              style={{
-                ...styles.text,
-                fontSize: 15,
-                color: themeColors.accentLight,
-              }}
-            >
-              {icons[filter] ? icons[filter].icon["light-18"] : filter}
+  /* renders the horizontal scrolling sections
+    that show search categories */
+  const renderSearchCategories = () => {
+    return (
+      <>
+        {Object.keys(searchCategories).map((key) => (
+          <View key={key} style={{ ...styles.searchSection, ...styles.shadow }}>
+            <Text style={{ ...styles.text, fontSize: 20, marginBottom: 10 }}>
+              {searchCategories[key].category}
             </Text>
-          </View>
-        ))}
-      </View>
 
-      {Object.keys(searchCategories).map((key) => (
-        <View key={key} style={{ ...styles.searchSection, ...styles.shadow }}>
-          <Text style={{ ...styles.text, fontSize: 20, marginBottom: 10 }}>
-            {searchCategories[key].category}
-          </Text>
-
-          <View style={styles.scrollSection}>
-            <MaterialIcons name="arrow-left" size={24} color="black" />
-            <ScrollView horizontal={true}>
-              {searchCategories[key].values.map((category) => (
-                <Pressable
-                  key={category}
-                  style={{
-                    ...styles.searchCategoryCard,
-                    backgroundColor: selectedFilters.includes(category)
-                      ? themeColors.accentRed
-                      : themeColors.accentLight,
-                  }}
-                  onPress={() => {
-                    if (!selectedFilters.includes(category)) {
-                      setSelectedFilters((prev) => [...prev, category]);
-                    } else {
-                      setSelectedFilters((prev) =>
-                        prev.filter((item) => item !== category)
-                      );
-                    }
-                  }}
-                >
-                  {icons[category] ? (
-                    <>
-                      {selectedFilters.includes(category)
-                        ? icons[category].icon["light-24"]
-                        : icons[category].icon["dark-24"]}
+            <View style={styles.scrollSection}>
+              <MaterialIcons name="arrow-left" size={24} color="black" />
+              <ScrollView horizontal={true}>
+                {searchCategories[key].values.map((category) => (
+                  <Pressable
+                    key={category}
+                    style={{
+                      ...styles.searchCategoryCard,
+                      backgroundColor: selectedFilters.includes(category)
+                        ? themeColors.accentRed
+                        : themeColors.accentLight,
+                    }}
+                    onPress={() => {
+                      if (!selectedFilters.includes(category)) {
+                        setSelectedFilters((prev) => [...prev, category]);
+                      } else {
+                        setSelectedFilters((prev) =>
+                          prev.filter((item) => item !== category)
+                        );
+                      }
+                      console.log(selectedFilters);
+                    }}
+                  >
+                    {icons[category] ? (
+                      <>
+                        {selectedFilters.includes(category)
+                          ? icons[category].icon["light-24"]
+                          : icons[category].icon["dark-24"]}
+                        <Text
+                          style={{
+                            ...styles.text,
+                            fontSize: 14,
+                            marginTop: 3,
+                            color: selectedFilters.includes(category)
+                              ? themeColors.accentLight
+                              : "black",
+                          }}
+                        >
+                          {category}
+                        </Text>
+                      </>
+                    ) : (
                       <Text
                         style={{
                           ...styles.text,
-                          fontSize: 14,
-                          marginTop: 3,
+                          fontSize: 18,
                           color: selectedFilters.includes(category)
                             ? themeColors.accentLight
                             : "black",
@@ -107,40 +88,84 @@ const SearchScreen = ({ navigation }) => {
                       >
                         {category}
                       </Text>
-                    </>
-                  ) : (
-                    <Text
-                      style={{
-                        ...styles.text,
-                        fontSize: 18,
-                        color: selectedFilters.includes(category)
-                          ? themeColors.accentLight
-                          : "black",
-                      }}
-                    >
-                      {category}
-                    </Text>
-                  )}
-                </Pressable>
-              ))}
-            </ScrollView>
-            <MaterialIcons name="arrow-right" size={24} color="black" />
+                    )}
+                  </Pressable>
+                ))}
+              </ScrollView>
+              <MaterialIcons name="arrow-right" size={24} color="black" />
+            </View>
           </View>
-        </View>
-      ))}
+        ))}
+      </>
+    );
+  };
 
-      <View style={styles.searchButton}>
-        <Pressable>
-          <Text
+  if (!fontsLoaded) {
+    return null;
+  }
+  return (
+    <ScrollView style={styles.container}>
+      <View style={styles.content}>
+        <View style={{ ...styles.searchBox, ...styles.shadow }}>
+          <TextInput
+            placeholder="Search..."
+            onSubmitEditing={Keyboard.dismiss}
+            onChangeText={(newText) => {
+              setSearchInput(newText);
+              console.log(searchInput);
+            }}
             style={{
-              ...styles.text,
-              fontSize: 20,
-              color: themeColors.accentLight,
+              fontFamily: "JosefinSans_400Regular",
+              fontSize: 18,
+              padding: 1,
+            }}
+          ></TextInput>
+        </View>
+
+        <View
+          style={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            marginBottom: 10,
+          }}
+        >
+          {selectedFilters.map((filter) => (
+            <View key={`selected-tag-${filter}`} style={styles.tag}>
+              <Text
+                style={{
+                  ...styles.text,
+                  fontSize: 15,
+                  color: themeColors.accentLight,
+                }}
+              >
+                {icons[filter] ? icons[filter].icon["light-18"] : filter}
+              </Text>
+            </View>
+          ))}
+        </View>
+
+        {renderSearchCategories()}
+
+        <View style={styles.searchButton}>
+          <Pressable
+            onPress={() => {
+              navigation.navigate("ResultScreen", {
+                search: searchInput,
+                filters: selectedFilters,
+              });
             }}
           >
-            Search
-          </Text>
-        </Pressable>
+            <Text
+              style={{
+                ...styles.text,
+                fontSize: 20,
+                color: themeColors.accentLight,
+              }}
+            >
+              Search
+            </Text>
+          </Pressable>
+        </View>
       </View>
     </ScrollView>
   );
@@ -150,12 +175,14 @@ export default SearchScreen;
 
 const styles = {
   container: {
+    opacity: 0.75,
+    backgroundColor: themeColors.greenBg,
+    fontFamily: "JosefinSans_400Regular",
+  },
+  content: {
     paddingTop: "15%",
     paddingBottom: "25%",
     paddingHorizontal: "3%",
-    opacity: 0.65,
-    backgroundColor: themeColors.greenBg,
-    fontFamily: "JosefinSans_400Regular",
   },
   searchBox: {
     padding: 10,
@@ -164,9 +191,9 @@ const styles = {
     borderColor: themeColors.borderDark,
     backgroundColor: themeColors.accentLight,
     marginTop: 5,
-    marginBottom: 15,
+    marginBottom: 10,
     fontFamily: "JosefinSans_400Regular",
-    height: 42,
+    height: 45,
   },
   searchSection: {
     paddingVertical: 15,
@@ -212,7 +239,7 @@ const styles = {
     paddingHorizontal: 10,
     margin: 3,
     borderColor: themeColors.accentLight,
-    borderWidth: 1,
+    borderWidth: 2,
     textAlign: "center",
     alignItems: "center",
     height: 35,

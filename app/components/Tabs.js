@@ -8,6 +8,7 @@ import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
 import { themeColors } from "../styles";
+import { SearchResultRoute } from "../Routes";
 
 const Tab = createBottomTabNavigator();
 
@@ -45,7 +46,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Search"
-        component={ResultScreen}
+        component={SearchResultRoute}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -65,7 +66,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Bookmarks"
-        component={SearchScreen}
+        component={BookmarkScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (

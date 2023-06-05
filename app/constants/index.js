@@ -12,6 +12,7 @@ export const restaurants = {
     distance: 1.5,
     rating: 3.5,
     cost: 2,
+    location: "Irvine",
     cuisines: ["Mexican"],
     categories: ["Fast food", "Bowl"],
     safeRestrictions: ["nuts", "dairy", "vegan", "vegetarian", "soy", "fish"],
@@ -28,6 +29,7 @@ export const restaurants = {
     distance: 2.3,
     rating: 3.8,
     cost: 2,
+    location: "Irvine",
     cuisines: ["Mediterranean"],
     categories: ["Fast food", "Bowl"],
     safeRestrictions: ["nuts", "dairy", "vegan", "vegetarian", "soy", "fish"],
@@ -44,6 +46,7 @@ export const restaurants = {
     distance: 3.1,
     rating: 4.4,
     cost: 3,
+    location: "Costa Mesa",
     cusines: ["Japanese"],
     categories: ["Restaurant", "Ramen"],
     safeRestrictions: ["nuts", "dairy", "vegetarian"],
@@ -54,6 +57,7 @@ export const restaurants = {
     distance: 2.0,
     rating: 3.9,
     cost: 3,
+    location: "Irvine",
     cusines: ["Chinese"],
     categories: ["Restaurant", "Hotpot", "Soup"],
     safeRestrictions: ["nuts", "dairy", "vegetarian", "fish"],
@@ -64,6 +68,7 @@ export const restaurants = {
     distance: 4.1,
     rating: 4.1,
     cost: 3,
+    location: "Santa Ana",
     cusines: ["Japanese"],
     categories: ["Restaurant", "Sushi"],
     safeRestrictions: ["nuts", "dairy", "vegetarian", "fish"],
@@ -74,6 +79,7 @@ export const restaurants = {
     distance: 4.5,
     rating: 4.6,
     cost: 3,
+    location: "Fountain Valley",
     cusines: ["Vietnamese"],
     categories: ["Cafe", "Breakfast", "Brunch"],
     safeRestrictions: ["nuts", "dairy", "fish"],
@@ -84,6 +90,7 @@ export const restaurants = {
     distance: 3.7,
     rating: 3.8,
     cost: 2,
+    location: "Costa Mesa",
     cusines: ["Middle Eastern"],
     categories: ["Fast food", "Bowl", "Halal"],
     safeRestrictions: ["nuts", "dairy", "fish", "halal", "soy"],
@@ -94,6 +101,7 @@ export const restaurants = {
     distance: 2.2,
     rating: 4.3,
     cost: 1,
+    location: "Santa Ana",
     cusines: ["Mexican"],
     categories: ["Food truck", "Tacos"],
     safeRestrictions: ["nuts", "dairy", "fish", "soy"],
@@ -105,6 +113,7 @@ export const restaurants = {
     rating: 3.3,
     cost: 1,
     cusines: ["Mexican"],
+    location: "Irvine",
     categories: ["Fast food", "Chicken"],
     safeRestrictions: ["nuts", "dairy", "fish", "soy"],
     ammenities: [
@@ -121,6 +130,7 @@ export const restaurants = {
     rating: 4.0,
     cost: 1,
     cusines: ["American"],
+    location: "Costa Mesa",
     categories: ["Fast food", "Chicken"],
     safeRestrictions: ["nuts", "fish", "soy"],
     ammenities: [
@@ -154,28 +164,12 @@ export const searchCategories = {
   },
   diets: {
     category: "Diets",
-    values: [
-      "Vegan",
-      "Vegetarian",
-      "Pescatarian",
-      "Gluten Free",
-      "Halal",
-      "Kosher",
-    ],
+    values: ["Vegan", "Vegetarian", "Pescatarian", "Halal", "Kosher"],
   },
   restrictions: {
     // dietary exclusions
     category: "Restrictions",
-    values: [
-      "nuts",
-      "peanut",
-      "fish",
-      "soy",
-      "dairy",
-      "egg",
-      "seafood",
-      "shellfish",
-    ],
+    values: ["nuts", "fish", "soy", "dairy", "egg", "seafood", "gluten"],
   },
   ammenities: {
     category: "Amenities",
@@ -198,19 +192,19 @@ export const icons = {
   "Apple Pay": {
     name: "Apple Pay",
     icon: {
-      "dark-18": <FontAwesome5 name="apple-pay" size={18} color="black" />,
-      "dark-24": <FontAwesome5 name="apple-pay" size={24} color="black" />,
+      "dark-18": <FontAwesome5 name="apple-pay" size={20} color="black" />,
+      "dark-24": <FontAwesome5 name="apple-pay" size={26} color="black" />,
       "light-18": (
         <FontAwesome5
           name="apple-pay"
-          size={18}
+          size={20}
           color={themeColors.accentLight}
         />
       ),
       "light-24": (
         <FontAwesome5
           name="apple-pay"
-          size={24}
+          size={26}
           color={themeColors.accentLight}
         />
       ),
@@ -219,19 +213,19 @@ export const icons = {
   "Google Pay": {
     name: "Google Pay",
     icon: {
-      "dark-18": <FontAwesome5 name="google-pay" size={18} color="black" />,
-      "dark-24": <FontAwesome5 name="google-pay" size={24} color="black" />,
+      "dark-18": <FontAwesome5 name="google-pay" size={20} color="black" />,
+      "dark-24": <FontAwesome5 name="google-pay" size={26} color="black" />,
       "light-18": (
         <FontAwesome5
           name="google-pay"
-          size={18}
+          size={20}
           color={themeColors.accentLight}
         />
       ),
       "light-24": (
         <FontAwesome5
           name="google-pay"
-          size={24}
+          size={26}
           color={themeColors.accentLight}
         />
       ),
@@ -484,8 +478,8 @@ export const icons = {
       ),
     },
   },
-  "Gluten Free": {
-    name: "Gluten Free",
+  gluten: {
+    name: "gluten",
     icon: {
       "dark-18": (
         <MaterialCommunityIcons name="barley-off" size={18} color="black" />
@@ -553,6 +547,156 @@ export const icons = {
       "light-24": (
         <MaterialCommunityIcons
           name="food-kosher"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
+  },
+  fish: {
+    name: "fish",
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="fish-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="fish-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="fish-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="fish-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
+  },
+  soy: {
+    name: "soy",
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="soy-sauce-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="soy-sauce-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="soy-sauce-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="soy-sauce-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
+  },
+  dairy: {
+    name: "dairy",
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="cheese-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="cheese-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="cheese-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="cheese-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
+  },
+  egg: {
+    name: "egg",
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="egg-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="egg-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="egg-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="egg-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
+  },
+  nuts: {
+    name: "nuts",
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="peanut-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="peanut-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="peanut-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="peanut-off"
+          size={24}
+          color={themeColors.accentLight}
+        />
+      ),
+    },
+  },
+  seafood: {
+    name: "seafood",
+    icon: {
+      "dark-18": (
+        <MaterialCommunityIcons name="shark-off" size={18} color="black" />
+      ),
+      "dark-24": (
+        <MaterialCommunityIcons name="shark-off" size={24} color="black" />
+      ),
+      "light-18": (
+        <MaterialCommunityIcons
+          name="shark-off"
+          size={18}
+          color={themeColors.accentLight}
+        />
+      ),
+      "light-24": (
+        <MaterialCommunityIcons
+          name="shark-off"
           size={24}
           color={themeColors.accentLight}
         />
