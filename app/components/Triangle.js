@@ -18,8 +18,8 @@ const Triangle = ({ results }) => {
   const [cost, setCost] = useState(0);
   const [distance, setDistance] = useState(0);
   const [rating, setRating] = useState(1);
-  const [dotY, setDotY] = useState(163);
-  const [dotX, setDotX] = useState(81);
+  const [dotY, setDotY] = useState(160);
+  const [dotX, setDotX] = useState(80);
 
   function getSortFunction(costVal, distVal, ratingVal) {
     return (a, b) => {
@@ -100,7 +100,7 @@ const Triangle = ({ results }) => {
             styles.triangle,
           ]}
         >
-          <Animatable.View style={[styles.circle, { top: dotY, left: dotX }]} animation="wobble" iterationCount={2} delay={100}>
+          <Animatable.View style={[styles.circle, { top: dotY, left: dotX }]} animation="wobble" iterationCount={1} duration={4000} delay={100}>
           </Animatable.View>
         </Pressable>
       </View>
@@ -175,9 +175,9 @@ const styles = {
     marginVertical: 5,
   },
   circle: {
-    width: 10,
-    height: 10,
-    borderRadius: 10 / 2,
+    width: 15,
+    height: 15,
+    borderRadius: 15 / 2,
     backgroundColor: "#ffffff",
     position: "absolute",
     margin: 0,
