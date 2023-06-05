@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { Pressable, Text, View } from "react-native";
 import { useFonts } from "expo-font";
-import { JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
+import { JosefinSans_600SemiBold } from "@expo-google-fonts/josefin-sans";
 import GLOBAL from "../UserData.js";
 import ResultCard from "../components/ResultCard";
 import { restaurants } from "../constants";
@@ -12,7 +12,7 @@ const height = 173;
 
 const Triangle = ({ results }) => {
   let [fontsLoaded] = useFonts({
-    JosefinSans_400Regular,
+    JosefinSans_600SemiBold,
   });
   const [cost, setCost] = useState(0);
   const [distance, setDistance] = useState(0);
@@ -143,7 +143,7 @@ const styles = {
     paddingHorizontal: 2,
   },
   textField: {
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_600SemiBold",
     shadowColor: "#386641",
     margin: 5,
   },

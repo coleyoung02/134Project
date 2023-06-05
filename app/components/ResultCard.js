@@ -1,6 +1,9 @@
 import React from "react";
 import { useFonts } from "expo-font";
-import { JosefinSans_400Regular } from "@expo-google-fonts/josefin-sans";
+import {
+  JosefinSans_400Regular,
+  JosefinSans_600SemiBold,
+} from "@expo-google-fonts/josefin-sans";
 import { StyleSheet, Text, View } from "react-native";
 import { Fontisto, FontAwesome5, Feather } from "@expo/vector-icons";
 import { themeColors } from "../styles";
@@ -11,6 +14,7 @@ const ResultCard = ({ restaurantInfo }) => {
 
   let [fontsLoaded] = useFonts({
     JosefinSans_400Regular,
+    JosefinSans_600SemiBold,
   });
   if (!fontsLoaded) {
     return null;
@@ -61,7 +65,7 @@ const ResultCard = ({ restaurantInfo }) => {
           <Text
             style={{
               fontSize: 15,
-              fontFamily: "JosefinSans_400Regular",
+              fontFamily: "JosefinSans_600SemiBold",
             }}
           >
             {" "}
@@ -80,14 +84,20 @@ const ResultCard = ({ restaurantInfo }) => {
           <Text
             style={{
               fontSize: 15,
-              fontFamily: "JosefinSans_400Regular",
+              fontFamily: "JosefinSans_600SemiBold",
             }}
           >
             {" "}
             {restaurantInfo.distance + "mi"}
           </Text>
         </View>
-        <View style={{ flexDirection: "row", height: 20, marginLeft: 20 }}>
+        <View
+          style={{
+            flexDirection: "row",
+            height: 20,
+            marginLeft: 20,
+          }}
+        >
           {maxCost.map((cost, i) => {
             if (i < Math.floor(restaurantInfo.cost)) {
               return (
@@ -142,7 +152,7 @@ const styles = StyleSheet.create({
     height: 120,
   },
   cardTitleText: {
-    fontFamily: "JosefinSans_400Regular",
+    fontFamily: "JosefinSans_600SemiBold",
     fontSize: 18,
   },
   icon: {

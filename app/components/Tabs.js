@@ -7,6 +7,7 @@ import ResultScreen from "../screens/ResultScreen";
 import { View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { FontAwesome } from "@expo/vector-icons";
+import { themeColors } from "../styles";
 
 const Tab = createBottomTabNavigator();
 
@@ -30,7 +31,9 @@ const Tabs = () => {
               <FontAwesome
                 name="home"
                 style={{
-                  color: focused ? "#fbf7ef" : "#f2e8cf",
+                  color: focused
+                    ? themeColors.accentLight
+                    : themeColors.lightBeige,
                   shadowOpacity: focused ? 0.5 : 0,
                   ...styles.iconShadow,
                 }}
@@ -62,7 +65,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Bookmarks"
-        component={BookmarkScreen}
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
@@ -82,7 +85,7 @@ const Tabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={ProfileScreen}
+        component={SearchScreen}
         options={{
           headerShown: false,
           tabBarIcon: ({ focused }) => (
