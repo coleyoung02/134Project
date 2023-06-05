@@ -25,6 +25,19 @@ const ResultScreen = ({ navigation, route }) => {
     JosefinSans_600SemiBold,
   });
 
+  function isSafe(restaurant) {
+    //console.log(restaurant);
+    let aller = restaurants[restaurant].safeRestrictions;
+    //console.log(aller);
+    console.log(aller);
+    console.log(route.params);
+    return route.params.filters.every((a) => aller.includes(a.toLowerCase()));
+  }
+
+  function isSafe(E) {
+    return true;
+  }
+
   console.log(route.params);
 
   const renderSearchFilters = () => {
@@ -102,7 +115,9 @@ const ResultScreen = ({ navigation, route }) => {
               color={themeColors.accentLight}
             />
           </View>
-          <Triangle results={restaurants} />
+          <Triangle results={
+            Object.keys(restaurants)
+            .filter(isSafe)} />
         </View>
       </View>
     </ScrollView>

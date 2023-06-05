@@ -50,6 +50,7 @@ const SearchScreen = ({ navigation }) => {
                     onPress={() => {
                       if (!selectedFilters.includes(category)) {
                         setSelectedFilters((prev) => [...prev, category]);
+                        console.log(selectedFilters);
                       } else {
                         setSelectedFilters((prev) =>
                           prev.filter((item) => item !== category)

@@ -51,6 +51,8 @@ const Triangle = ({ results }) => {
     //console.log(restaurant);
     let aller = restaurants[restaurant].safeRestrictions;
     //console.log(aller);
+    console.log(aller);
+    console.log(GLOBAL.allergens);
     return GLOBAL.allergens.every((a) => aller.includes(a));
   }
 
@@ -125,8 +127,7 @@ const Triangle = ({ results }) => {
       </View>
 
       <View style={{ marginTop: 10 }}>
-        {Object.keys(results)
-          .filter(isSafe)
+        {results
           .sort(getSortFunction(cost, distance, rating))
           .map((restaurantName, i) => (
             <ResultCard restaurantInfo={restaurants[restaurantName]} key={i} />
